@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Randomized Autoregressive Visual Generation">
+  <meta name="keywords" content="Autoregressive, Image Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Randomized Autoregressive Visual Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" 🥥>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://yucornetto.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://yucornetto.github.io/projects/titok.html">
+            TiTok
+          </a>
+          <a class="navbar-item" href="https://xdeng7.github.io/coconut.github.io/">
+            COCONut
+          </a>
+          <a class="navbar-item" href="https://beckschen.github.io/vitamin">
+            ViTamin
+          </a>
+          <a class="navbar-item" href="https://github.com/bytedance/fc-clip">
+            FC-CLIP
+          </a>
+          <a class="navbar-item" href="https://github.com/bytedance/OmniScient-Model">
+            OSM
+          </a>
+          <a class="navbar-item" href="https://github.com/TACJu/MaXTron">
+            MaXTron
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title">Randomized Autoregressive Visual Generation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yucornetto.github.io/">Qihang Yu, </a></span>
+            <span class="author-block">
+                <a href="https://tacju.github.io/">Ju He, </a></span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/xueqingdeng7/home">Xueqing Deng, </a></span>
+            <span class="author-block">
+              <a href="https://xiaohuishen.github.io/">Xiaohui Shen, </a></span>
+            <span class="author-block">
+              <a href="http://liangchiehchen.com/">Liang-Chieh Chen</a></span>
+           
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">ByteDance</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2411.00776"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2411.00776"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/bytedance/1d-tokenizer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/yucornetto/RAR"
+                   class="external-link button is-normal is-rounded is-dark">
+
+                  <span>🤗 HuggingFace Model</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/yucornetto/RAR"
+                   class="external-link button is-normal is-rounded is-dark">
+
+                  <span>🤗 HuggingFace Demo</span>
+              </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/images/rar/rar_overview.mp4"
+                type="video/mp4">
+      </video>
+      <!-- <img src="./static/images/rar/rar_overview.png"
+                class="teaser"
+                alt="teaser image."/> -->
+      <h2 class="subtitle has-text-centered">
+        RAR is a an autoregressive (AR) image generator with full compatibility to language modeling. It introduces a randomness annealing strategy with permuted objective <b>at no additional cost</b>, which enhances the model's ability to learn bidirectional contexts while leaving the autoregressive framework intact. RAR sets a FID score <b>1.48</b>, demonstrating state-of-the-art performance on ImageNet-256 benchmark and significantly outperforming prior AR image generators.
+      </h2>
+      <br>
+      <div class="columns is-centered">
+        <div class="column is-full-width has-text-centered">
+          <img src="./static/images/rar/perf_comp.png"
+                    class="teaser is-centered"
+                    alt="teaser image."/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-light is-big", style="margin-top: -35px">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <br>
+        <br>
+        <h2 class="title is-3">🔥 Highlights</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-five-fifths">
+        <p style="font-size: 20px;">
+        1. We introduce RAR, an improved training strategy enabling <span style="color: rgb(199, 9, 9)"><b>standard autoregressive image generator</b></span> to achieve <span style="color: rgb(128, 0, 128)"><b>state-of-the-art</b></span> performance.
+        </p>
+        <br>
+        <p style="font-size: 20px;">
+        2. The proposed RAR is extremly simple yet effective: During training, we randomly permute the input token sequence with probability r, where r will starts at 1.0 and linearly decays to 0.0 over the course of training. <span style="color:rgba(14, 122, 41, 0.904) " ><b>This simple strategy enbales better bidirectional representation learning which is missing in standard raster-order-based AR image generator training.</b></span>
+        </p>
+        <br>
+        <p style="font-size: 20px;">
+        3. RAR keeps the AR framework intact, and thus it is totally <span style="color: rgb(131, 102, 7)"><b>compatible to the LLM optimization techniques</b></span>, such as KV-cache, leading to a <span style="color: rgb(4, 23, 107)"><b>significantly faster sampling speed</b></span> compared to MAR-H or MaskBit while maintaining a better performance.</b></span>
+        </p>
+        <br><br>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This paper presents <b>R</b>andomized <b>A</b>uto<b>R</b>egressive modeling (<b>RAR</b>) for visual generation, which sets a new state-of-the-art performance on the image generation task while maintaining full compatibility with language modeling frameworks. The proposed RAR is simple: during a standard autoregressive training process with a next-token prediction objective, the input sequence—typically ordered in raster form—is randomly permuted into different factorization orders with a probability r, where r starts at 1 and linearly decays to 0 over the course of training. This annealing training strategy enables the model to learn to maximize the expected likelihood over all factorization orders and thus effectively improve the model's capability of modeling bidirectional contexts. Importantly, RAR preserves the integrity of the autoregressive modeling framework, ensuring full compatibility with language modeling while significantly improving performance in image generation. On the ImageNet-256 benchmark, RAR achieves an FID score of <b>1.48</b>, not only surpassing prior state-of-the-art autoregressive image generators but also outperforming leading diffusion-based and masked transformer-based methods.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!--/ Abstract. -->
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"> RAR Framework Overview</h2>
+      </div>
+    </div>
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <div class="column is-centered ">
+      <img src="./static/images/rar/rar_framework.png"
+                class="framework-image"
+                alt="framework overview image."/>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"> Randomization with Annealing Leads to Substantial Perfromance Improvement</h2>
+      </div>
+    </div>
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <div class="column is-centered ">
+      <img src="./static/images/rar/annealing_table.png"
+                class="preliminary-image"
+                alt="preliminary image."/>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"> RAR Works Well with Different Scan Orders</h2>
+      </div>
+    </div>
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <div class="column is-centered ">
+      <img src="./static/images/rar/scan_order.png"
+                class="preliminary-image"
+                alt="preliminary image."/>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section">
+  <div class="container  is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"> Main Experiment Results</h2>
+      </div>
+    </div>
+    <div class="columns is-centered ">
+      <div class="columns is-centered">
+        <div class="column is-full-width has-text-centered">
+          <img src="./static/images/rar/fid.png"
+                    class="exp256-image"
+                    alt="exp256 image."/>
+          <img src="./static/images/rar/speed.png"
+                    class="speed"
+                    alt="speed."/>
+    </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"> Scaling Behavior</h2>
+      </div>
+    </div>
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <div class="column is-centered ">
+      <img src="./static/images/rar/scaling_curve.png"
+                class="scaling curve"
+                alt="scaling curve."/>
+      <img src="./static/images/rar/scaling_vis.png"
+                class="scaling vis"
+                alt="scaling vis."/>
+    </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"> Visualization</h2>
+      </div>
+    </div>
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <div class="column is-centered ">
+      <img src="./static/images/rar/vis1.png"
+                class="vis1"
+                alt="vis1."/>
+      <img src="./static/images/rar/vis2.png"
+                class="vis2"
+                alt="vis2."/>
+      <img src="./static/images/rar/vis3.png"
+                class="vis3"
+                alt="vis3."/>
+      <h2 class="subtitle has-text-centered">
+            Visualization on the generated samples with RAR. <b>Note that all images/videos in the project page are compressed, please refer to the paper for best views.</b>
+      </h2>
+    </div>
+    </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{yu2024randomized,
+  author    = {Qihang Yu and Ju He and Xueqing Deng and Xiaohui Shen and Liang-Chieh Chen},
+  title     = {Randomized Autoregressive Visual Generation},
+  journal   = {arxiv},
+  year      = {2024}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

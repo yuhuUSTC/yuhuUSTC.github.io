@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Frequency Autoregressive Image Generation with Continuous Tokens">
+  <meta name="keywords" content="Image Tokenization, Image Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frequency Autoregressive Image Generation with Continuous Tokens</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" 🥥>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://yuhuustc.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title">Frequency Autoregressive Image Generation with Continuous Tokens</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yuhuustc.github.io/">Hu Yu</a><sup>1</sup>,</span>
+            <span class="author-block">
+                <a href="https://luohao.site/">Hao Luo</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://jacobyuan7.github.io//">Hangjie Yuan</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://royrong.me/">Yu Rong</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://bivlab123.github.io/">Feng Zhao</a>,</span>
+           
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Alibaba Group, DAMO Academy </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2503.05305"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/yuhuUSTC/FAR"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/figereatfish/FAR"
+                   class="external-link button is-normal is-rounded is-dark">
+
+                  <span>🤗 HuggingFace Model</span>
+                  </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/figereatfish/FAR_T2I"
+                   class="external-link button is-normal is-rounded is-dark">
+
+                  <span>🤗 HuggingFace Model(T2I)</span>
+                  </a>
+              </span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <img src="./static/images/FAR/Visual_ImageNet.png"
+                class="teaser"
+                alt="teaser image."/>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-big", style="margin-top: -35px">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <br>
+        <br>
+        <h2 class="title is-3">🔥 Highlights</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <p style="font-size: 20px;">
+        1. We propose the <span style="color: rgb(199, 9, 9)"><b>FAR paradigm, leveraging the spectral dependency of image data.</b></span> FAR fits the causality requirement of AR models and preserves the spatial locality of image data, while being more sampling efficient.
+        </p>
+        <br>
+        <p style="font-size: 20px;">
+        2. We delve into the  <span style="color: rgb(131, 102, 7)"><b>instantiation of FAR with the continuous tokenizer</b></span>, introducing a series of techniques to address the optimization challenges and improve the efficiency of both training and inference. FAR only needs <b>10</b> steps to generate an image.
+        </p>
+        <br>
+        <p style="font-size: 20px;">
+        3. We demonstrate the effectiveness and scalability of FAR through comprehensive experiments  <span style="color: rgb(4, 23, 107)"><b>on ImageNet dataset and further extend FAR to text-to-image generation.</b></span>
+        </p>
+        <br><br>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Autoregressive (AR) models for image generation typically adopt a two-stage paradigm of vector quantization and raster-scan "next-token prediction", inspired by its great success in language modeling. 
+            However, due to the huge modality gap, image autoregressive models may require a systematic reevaluation from two perspectives: tokenizer format and regression direction. 
+            In this paper, we introduce the frequency progressive autoregressive <b>FAR</b> paradigm and instantiate FAR with the continuous tokenizer. 
+            Specifically, we identify spectral dependency as the desirable regression direction for FAR, wherein higher-frequency components build upon the lower one to progressively construct a complete image. 
+            This design seamlessly fits the causality requirement for autoregressive models and preserves the unique spatial locality of image data.
+            Besides, we delve into the integration of FAR and the continuous tokenizer, introducing a series of techniques to address optimization challenges and improve the efficiency of training and inference processes. 
+            We demonstrate the efficacy of FAR through comprehensive experiments on the ImageNet dataset and verify its potential on text-to-image generation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!--/ Abstract. -->
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"> FAR Framework Overview</h2>
+      </div>
+    </div>
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <div class="column is-centered ">
+      <img src="./static/images/FAR/FAR_framework.png"
+                class="framework-image"
+                alt="framework overview image."/>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"> Main Experiment Results</h2>
+      </div>
+    </div>
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <div class="column is-centered ">
+      <img src="./static/images/FAR/Main_Exp_ImageNet.png"
+                class="exp256-image"
+                alt="exp256 image."/>
+      <br>
+      <img src="./static/images/FAR/Main_Exp_T2I.png"
+                class="exp512-image"
+                alt="exp512 image."/>
+    </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"> Visualization</h2>
+      </div>
+    </div>
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <div class="column is-centered ">
+      <img src="./static/images/FAR/Visual_T2I.png"
+                class="framework-image"
+                alt="framework overview image."/>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{yu2024an,
+  author    = {Hu Yu and Hao Luo and Hangjie Yuan and Yu Rong and Feng Zhao},
+  title     = {Frequency Autoregressive Image Generation with Continuous Tokens},
+  journal   = {arxiv: 2503.05305},
+  year      = {2025}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- <a class="icon-link"
+         href="https://drive.google.com/file/d/1QgiG-X15kUGUMikNBg5MSROMgHvc-GhG/view?usp=drive_link">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a> -->
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
